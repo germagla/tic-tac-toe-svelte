@@ -1,6 +1,6 @@
 <script>
   let handleClick = () => {
-
+    console.log("Tile Clicked!");
   };
 </script>
 <style></style>

@@ -6,8 +6,8 @@
 
 <style>
   .gameboard{
-      height: 50%;
-      width: 50%;
+      height: 50vw;
+      width: 50vw;
   }
 </style>
 
