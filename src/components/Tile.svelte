@@ -5,11 +5,6 @@
   export let value;
 </script>
 <style>
-    .remix {
-        width: 55px;
-        height: 55px;
-        fill: #000;
-    }
 </style>
 <div class="tile bg-white h-full w-full border-solid border-2 border-black" on:click={handleClick}>
   {#if value === 'X'}
