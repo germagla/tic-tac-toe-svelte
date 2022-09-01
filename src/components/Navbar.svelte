@@ -2,7 +2,7 @@
   <div class="navbar bg-base-100m bg-base-100 shadow-xl  fixed top-0 left-0 right-0
     border-b-solid border-b border-b-black">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl" href="/">Tic-Tac-Toe</a>
+      <a class="btn btn-ghost normal-case text-xl" href="/">#tictactoe</a>
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal p-0">

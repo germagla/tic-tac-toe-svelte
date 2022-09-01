@@ -1,8 +1,10 @@
 <script>
-  import { BoardState } from "../stores.ts";
-  import Tile from "./Tile.svelte";
+  import { Board } from "../store.ts";
+  import BoardTile from "./BoardTile.svelte";
+  import { onMount } from "svelte";
 
-  function calculateWinner(squares) {
+
+  const calculateWinner = squares => {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -20,24 +22,45 @@
       }
     }
     return null;
-  }
+
+  };
+
+  const handleClick = (event) => {
+    console.log(event.target);
+
+    
+  };
+
+  const resetBoard = () => {
+    //TODO: write resetBoard function
+  };
+
+  let isXTurn = true;
+  let tileObjects = [];
+
 
 </script>
 
 
-<style>
-  .gameboard{
-      height: 50vw;
-      width: 50vw;
-  }
-</style>
+<div class="gameboard grid grid-rows-3 grid-cols-3 border-solid border-2 border-black">
+  {#if $Board}
+    {#each $Board as Tile, index}
+      <div on:click={()=>{
+        $Board[index].value = $Board[index].value? $Board[index].value : isXTurn? 'X':'O';
+        isXTurn = !isXTurn;
+      }}>
+        <BoardTile bind:this={tileObjects[$Board[index].id]} bind:value={$Board[index].value} bind:num={$Board[index].id} />
+      </div>
 
-
-<div  class="gameboard grid grid-rows-3 grid-cols-3 border-solid border-2 border-black">
-  {#each $BoardState as BoardTile, i}
-
-      <div><Tile/></div>
-
-
-  {/each}
+    {/each}
+  {/if}
 </div>
+
+<style>
+    .gameboard {
+        height: 50vw;
+        width: 50vw;
+        max-height: 65vh;
+        max-width: 65vh;
+    }
+</style>
