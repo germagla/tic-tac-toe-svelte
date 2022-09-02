@@ -28,7 +28,7 @@
   const handleClick = (event) => {
     console.log(event.target);
 
-    
+
   };
 
   const resetBoard = () => {
@@ -36,25 +36,22 @@
   };
 
   // let $isXTurn = true;
-  let tileObjects = [];
 
 
 </script>
 
 
 <div class="gameboard grid grid-rows-3 grid-cols-3 border-solid border-2 border-black">
-  {#if $Board}
     {#each $Board as Tile, index}
       <div on:click={()=>{
-        $Board[index].value = $Board[index].value? $Board[index].value : $isXTurn? 'X':'O';
+        if(Tile.value!==null)return;
+        Tile.value = $isXTurn? 'X':'O';
         $isXTurn = !$isXTurn;
-        
       }}>
-        <BoardTile bind:this={tileObjects[$Board[index].id]} bind:value={$Board[index].value} bind:num={$Board[index].id} />
+        <BoardTile bind:value={Tile.value}/>
       </div>
 
     {/each}
-  {/if}
 </div>
 
 <style>
