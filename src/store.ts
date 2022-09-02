@@ -14,3 +14,5 @@ export const Board = writable([
   { id: 8, value: null }
 ]);
 
+export const isXTurn = writable(true);
+

@@ -1,5 +1,5 @@
 <script>
-  import { Board } from "../store.ts";
+  import { Board, isXTurn } from "../store.ts";
   import BoardTile from "./BoardTile.svelte";
   import { onMount } from "svelte";
 
@@ -35,7 +35,7 @@
     //TODO: write resetBoard function
   };
 
-  let isXTurn = true;
+  // let $isXTurn = true;
   let tileObjects = [];
 
 
@@ -46,8 +46,9 @@
   {#if $Board}
     {#each $Board as Tile, index}
       <div on:click={()=>{
-        $Board[index].value = $Board[index].value? $Board[index].value : isXTurn? 'X':'O';
-        isXTurn = !isXTurn;
+        $Board[index].value = $Board[index].value? $Board[index].value : $isXTurn? 'X':'O';
+        $isXTurn = !$isXTurn;
+        
       }}>
         <BoardTile bind:this={tileObjects[$Board[index].id]} bind:value={$Board[index].value} bind:num={$Board[index].id} />
       </div>
