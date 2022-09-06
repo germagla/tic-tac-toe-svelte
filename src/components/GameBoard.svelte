@@ -26,7 +26,6 @@
   };
 
 
-
   // let $isXTurn = true;
 
 
@@ -34,18 +33,19 @@
 
 
 <div class="gameboard grid grid-rows-3 grid-cols-3 border-solid border-2 border-black">
-    {#each $Board as Tile, index}
-      <div on:click={()=>{
-        $winner = calculateWinner($Board);
+  {#each $Board as Tile, index}
+    <div on:click={()=>{
+        if($winner) return;
         console.log($winner);
         if(Tile!==null)return;
         Tile = $isXTurn? 'X':'O';
         $isXTurn = !$isXTurn;
+        $winner = calculateWinner($Board);
       }}>
-        <BoardTile bind:value={Tile}/>
-      </div>
+      <BoardTile bind:value={Tile} />
+    </div>
 
-    {/each}
+  {/each}
 </div>
 
 <style>

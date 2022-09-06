@@ -5,16 +5,20 @@
   const resetBoard = () => {
     isXTurn.set(true);
     Board.set(Array(9).fill(null));
-    winner.set({});
+    winner.set(null);
   };
 
 </script>
 
 <div class="gamepage flex flex-col place-content-center place-items-center">
-  <h1 class="p-8 text-4xl">..it's {$isXTurn ? "X's" : "O's"} turn..</h1>
-  <GameBoard />
-  {#if $winner}
-  <button class="btn btn-wide btn-xs sm:btn-sm md:btn-md lg:btn-lg m-9" on:click={resetBoard}>Play Again</button>
+  {#if !$winner}
+    <h1 class="p-8 text-4xl">..it's {$isXTurn ? "X's" : "O's"} turn..</h1>
+    <GameBoard />
+  {:else}
+    <h1 class="p-8 text-4xl">{$winner} wins!</h1>
+    <GameBoard />
+    <button class="btn btn-wide btn-xs sm:btn-sm md:btn-md lg:btn-lg m-9"
+            on:click={resetBoard}>Play Again</button>
   {/if}
 </div>
 
