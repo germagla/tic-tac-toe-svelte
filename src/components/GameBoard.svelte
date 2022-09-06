@@ -1,5 +1,5 @@
 <script>
-  import { Board, isXTurn } from "../store.ts";
+  import { Board, isXTurn, winner } from "../store.ts";
   import BoardTile from "./BoardTile.svelte";
   import { onMount } from "svelte";
 
@@ -36,11 +36,13 @@
 <div class="gameboard grid grid-rows-3 grid-cols-3 border-solid border-2 border-black">
     {#each $Board as Tile, index}
       <div on:click={()=>{
-        if(Tile.value!==null)return;
-        Tile.value = $isXTurn? 'X':'O';
+        $winner = calculateWinner($Board);
+        console.log($winner);
+        if(Tile!==null)return;
+        Tile = $isXTurn? 'X':'O';
         $isXTurn = !$isXTurn;
       }}>
-        <BoardTile bind:value={Tile.value}/>
+        <BoardTile bind:value={Tile}/>
       </div>
 
     {/each}
