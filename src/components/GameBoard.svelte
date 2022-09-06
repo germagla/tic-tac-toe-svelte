@@ -25,15 +25,7 @@
 
   };
 
-  const handleClick = (event) => {
-    console.log(event.target);
 
-
-  };
-
-  const resetBoard = () => {
-    //TODO: write resetBoard function
-  };
 
   // let $isXTurn = true;
 

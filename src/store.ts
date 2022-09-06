@@ -16,3 +16,5 @@ export const Board = writable([
 
 export const isXTurn = writable(true);
 
+export const winner = writable({})
+
