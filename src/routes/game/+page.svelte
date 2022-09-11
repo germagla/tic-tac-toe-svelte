@@ -12,10 +12,10 @@
 
 <div class="gamepage flex flex-col place-content-center place-items-center">
   {#if !$winner}
-    <h1 class="p-8 text-4xl">..it's {$isXTurn ? "X's" : "O's"} turn..</h1>
+    <h1 class="p-8 text-4xl text-secondary">..it's {$isXTurn ? "X's" : "O's"} turn..</h1>
     <GameBoard />
   {:else}
-    <h1 class="p-8 text-4xl">{$winner} wins!</h1>
+    <h1 class="p-8 text-4xl text-primary">{$winner} wins!</h1>
     <GameBoard />
     <button class="btn btn-wide btn-xs sm:btn-sm md:btn-md lg:btn-lg m-9"
             on:click={resetBoard}>Play Again</button>
